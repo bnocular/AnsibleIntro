@@ -1,0 +1,6 @@
+# ini buat ping
+---
+  - hosts: all
+    tasks:
+      - name: ping ke semua server
+        action: ping

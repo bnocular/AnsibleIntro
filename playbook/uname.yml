@@ -1,0 +1,6 @@
+# uname.yml ngambil info OS
+---
+  - hosts: webservers:loadbalancers
+    tasks:
+      - name: Ambil tipe OS
+        shell: uname
