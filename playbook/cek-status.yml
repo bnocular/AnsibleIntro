@@ -1,0 +1,8 @@
+# contoh buat ngecek status apache
+
+---
+  - hosts: webservers:loadbalancers
+    become: true
+    tasks:
+      - name: ngecek status apache
+        command: service httpd status

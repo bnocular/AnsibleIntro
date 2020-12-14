@@ -1,0 +1,9 @@
+#  nyatuin semua playbook jadi satu, biar bisa sekali running. mirip kaya call script di mgw
+
+---
+  - import_playbook: yum-update.yml
+  - import_playbook: instal-servis.yml
+  - import_playbook: setup-app.yml
+  - import_playbook: setup-lb.yml
+  - import_playbook: cek-status.yml
+  
