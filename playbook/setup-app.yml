@@ -7,17 +7,27 @@
     vars:
       path: "/var/www/html"  
 
+    vars_prompt:
+      - name: "upload_var"
+        prompt: "beneran mau upload ni?"
+      - name: "create_var"
+        prompt: "beneran mau create ni?"
+
     tasks: 
       - name: Upload app file, index page buat web
         copy:
           src: ../index.php
           dest: "{{ path }}"
           mode: 0755
+        when: upload_var == 'yes'
+        tags: upload  
 
       - name: Buat info page sederhana
         copy:
           dest: "{{ path }}/info.php"
           content: "<h1> Tes untuk menampilkan informasi tentang webserver yang sedang digunakan {{ ansible_hostname }}. Ada rubah ga ya?..</h1>"  
+        when: create_var == 'yes'
+        tags: create
 
       - name: configure php.ini file
         lineinfile:
